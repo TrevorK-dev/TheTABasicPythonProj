@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import filedialog
+import os
 
 # Be sure to import our other modules 
 # so we can have access to them
@@ -39,12 +41,18 @@ def load_gui(self):
     self.btn_browse4 = tk.Button(self.master,width=12,height=2,text='Close Program')
     self.btn_browse4.grid(row=2,column=3,padx=(20,0),pady=(20,10),sticky=W)
 
-
    #  owngui_func.create_db(self)
     # owngui_func.onRefresh(self)
 
-    
 
+root = Tk()
+root.withdraw()
+
+current_directory = filedialog.askdirectory()
+file_name = "test.txt"
+
+file_path = os.path.join(current_directory,file_name)
+print(file_path)
 
 
 if __name__ == "__main__":
