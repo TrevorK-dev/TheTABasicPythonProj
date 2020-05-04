@@ -40,6 +40,18 @@ import owngui_gui
 
 
 # Frame is the Tkinter frame class that our own class will inherit from
+def cur_directory(self):
+    current_directory = filedialog.askdirectory()
+    self.txt_filedir.insert(0,current_directory)
+
+def cur_directory2(self):
+    current_directory2 = filedialog.askdirectory()
+    self.txt_filedir2.insert(0, current_directory2)
+    
+
+
+
+
 class ParentWindow(Frame):
     def __init__(self, master, *args, **kwargs):
         Frame.__init__(self, master, *args, **kwargs)
