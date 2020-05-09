@@ -23,9 +23,9 @@ def load_gui(self):
     self.txt_filedir2 = tk.Entry(self.master,text='')
     self.txt_filedir2.grid(row=1,column=2,rowspan=1,columnspan=2,padx=(25,40),pady=(30,20),sticky=N+E+W)
 
-    self.btn_browse = tk.Button(self.master,width=12,height=2,text='Browse', command=lambda: owngui_main.cur_directory(self))
+    self.btn_browse = tk.Button(self.master,width=12,height=2,text='Source', command=lambda: owngui_main.cur_directory(self))
     self.btn_browse.grid(row=0,column=0,padx=(20,0),pady=(20,10),sticky=W)
-    self.btn_browse2 = tk.Button(self.master,width=12,height=2,text='Browse', command=lambda: owngui_main.cur_directory2(self))
+    self.btn_browse2 = tk.Button(self.master,width=12,height=2,text='Destination', command=lambda: owngui_main.cur_directory2(self))
     self.btn_browse2.grid(row=1,column=0,padx=(20,0),pady=(20,10),sticky=W)
     self.btn_browse3 = tk.Button(self.master,width=12,height=2,text='Check For Files')
     self.btn_browse3.grid(row=2,column=0,padx=(20,0),pady=(20,10),sticky=W)
