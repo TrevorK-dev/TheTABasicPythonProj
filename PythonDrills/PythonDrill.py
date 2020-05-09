@@ -1,12 +1,11 @@
 import os, sys
+dirs = os.listdir( "C:\A" )
 
-path = "C:\A"
-dirs = os.listdir( path )
+print( "C:\A" )
 
-print(path)
-
-os.path.getmtime(path)
-
-abspath = os.path.join(path,"Hello.txt")
+abspath = os.path.join("C:\A","Hello.txt")
 
 print(abspath)
+
+
+os.path.getmtime( "C:\A" )
