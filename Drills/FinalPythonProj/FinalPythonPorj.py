@@ -27,7 +27,7 @@ def load_gui(self):
     self.btn_browse.grid(row=0,column=0,padx=(20,0),pady=(20,10),sticky=W)
     self.btn_browse2 = tk.Button(self.master,width=12,height=2,text='Destination', command=lambda: cur_directory2(self))
     self.btn_browse2.grid(row=1,column=0,padx=(20,0),pady=(20,10),sticky=W)
-    self.btn_browse3 = tk.Button(self.master,width=12,height=2,text='Move Files')
+    self.btn_browse3 = tk.Button(self.master,width=12,height=2,text='Move Files', command=lambda: fmove(self))
     self.btn_browse3.grid(row=2,column=0,padx=(20,0),pady=(20,10),sticky=W)
     self.btn_browse4 = tk.Button(self.master,width=12,height=2,text='Close Program', command = root.destroy)
     self.btn_browse4.grid(row=2,column=3,padx=(20,0),pady=(20,10),sticky=W)
@@ -49,6 +49,7 @@ def load_gui(self):
 root = Tk()
 root.withdraw()
 
+
 def cur_directory(self):
     current_directory = filedialog.askdirectory()
     self.txt_filedir.insert(0,current_directory)
@@ -56,6 +57,22 @@ def cur_directory(self):
 def cur_directory2(self):
     current_directory2 = filedialog.askdirectory()
     self.txt_filedir2.insert(0, current_directory2)
+
+def fmove(self):
+    gsource = self.txt_filedir.get()
+    print(gsource)
+    gdestination = self.txt_filedir2.get()
+    print(gdestination)
+    dirs = os.listdir(gsource)
+    print(dirs)
+    for x in dirs:
+        if x.endswith(".txt"):
+            abspath = os.path.join(gsource, x)
+            print(abspath)
+            gmtime = os.path.getmtime( abspath )
+            print(gmtime)
+            shutil.move(gsource, gdestination)
+    
 
 
 class ParentWindow(Frame):
