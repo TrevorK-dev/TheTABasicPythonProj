@@ -39,27 +39,22 @@ root.withdraw()
 
 
 def cur_directory(self):
-    current_directory = filedialog.askdirectory()
-    self.txt_filedir.insert(0,current_directory)
+    self.current_directory = filedialog.askdirectory()
+    self.txt_filedir.insert(0,self.current_directory)
 
 def cur_directory2(self):
-    current_directory2 = filedialog.askdirectory()
-    self.txt_filedir2.insert(0, current_directory2)
+    self.current_directory2 = filedialog.askdirectory()
+    self.txt_filedir2.insert(0, self.current_directory2)
 
 def fmove(self):
-    gsource = self.txt_filedir.get()
-    print(gsource)
-    gdestination = self.txt_filedir2.get()
-    print(gdestination)
-    dirs = os.listdir(gsource)
+    dirs = os.listdir(self.current_directory)
     print(dirs)
     for x in dirs:
         if x.endswith(".txt"):
-            abspath = os.path.join(gsource, x)
-            print(abspath)
-            gmtime = os.path.getmtime( abspath )
-            print(gmtime)
-            shutil.move(gsource, gdestination)
+            abspath = os.path.join(self.current_directory, x)
+            gmtime = os.path.getmtime(abspath)
+            print(x,gmtime)
+            shutil.move(x, self.current_directory2)
     
 
 
