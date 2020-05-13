@@ -32,10 +32,6 @@ def load_gui(self):
     self.btn_browse4 = tk.Button(self.master,width=12,height=2,text='Close Program', command = root.destroy)
     self.btn_browse4.grid(row=2,column=3,padx=(20,0),pady=(20,10),sticky=W)
 
-    mainloop()
-
-root = Tk()
-root.withdraw()
 
 
 def cur_directory(self):
@@ -53,8 +49,8 @@ def fmove(self):
         if x.endswith(".txt"):
             abspath = os.path.join(self.current_directory, x)
             gmtime = os.path.getmtime(abspath)
-            print(x,gmtime)
-            shutil.move(x, self.current_directory2)
+            print(x, gmtime)
+            shutil.move(abspath, self.current_directory2)
     
 
 
@@ -78,26 +74,7 @@ class ParentWindow(Frame):
         # load in the GUI widgets from a separate module, 
         # keeping your code comparmentalized and clutter free
         load_gui(self)
-        
-        # Instantiate the Tkinter menu dropdown object
-        # This is the menu that will appear at the top of our window
-        menubar = Menu(self.master)
-        filemenu = Menu(menubar, tearoff=0)
-        filemenu.add_separator()
-       #  filemenu.add_command(label="Exit", underline=1,accelerator="Ctrl+Q",command=lambda: owngui_func.ask_quit(self))
-        menubar.add_cascade(label="File", underline=0, menu=filemenu)
-        helpmenu = Menu(menubar, tearoff=0) # defines the particular drop down colum and tearoff=0 means do not separate from menubar
-        helpmenu.add_separator()
-        helpmenu.add_command(label="How to use this program")
-        helpmenu.add_separator()
-        helpmenu.add_command(label="About This Phonebook Demo") # add_command is a child menubar item of the add_cascde parent item
-        menubar.add_cascade(label="Help", menu=helpmenu) # add_cascade is a parent menubar item (visible heading)
-        """
-            Finally, we apply the config method of the widget to display the menu
-            From here we could also pass in additional aprams for additional 
-            functionalityor appearances such as a borderwidth.
-        """
-        self.master.config(menu=menubar, borderwidth='1')
+
 
 
 
