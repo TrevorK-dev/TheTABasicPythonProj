@@ -5,6 +5,20 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import filedialog
 import os, sys
+import sqlite3
+
+conn = sqlite3.connect('fpp.db')
+
+with conn:
+    cur = conn.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS tbl_files( \
+        ID_INTEGER PRIMARY KEY, \
+        col_fname TEXT, \
+        col_mtime TEXT \
+        )")
+    conn.commit()
+conn.close()
+
 
 
 
@@ -43,6 +57,7 @@ def cur_directory2(self):
     self.txt_filedir2.insert(0, self.current_directory2)
 
 def fmove(self):
+    conn = sqlite3.connect('fpp.db')
     dirs = os.listdir(self.current_directory)
     print(dirs)
     for x in dirs:
@@ -51,6 +66,14 @@ def fmove(self):
             gmtime = os.path.getmtime(abspath)
             print(x, gmtime)
             shutil.move(abspath, self.current_directory2)
+            with conn:
+                cur = conn.cursor()
+                cur.execute("INSERT INTO tbl_files(col_fname, col_mtime) VALUES (?,?)",\
+                            (x, gmtime))
+                conn.commit()
+            conn.close()
+                        
+                        
     
 
 
